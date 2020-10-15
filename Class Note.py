@@ -97,6 +97,7 @@ def f(x):
 
 '''
 
+
 ## ________________________________ Week 3 ________________________________  ##
 print('WEEK THREE')
 
@@ -121,7 +122,11 @@ elif my_license in ['N', 'NO', 'No', 'n']:
 else:
     print('Sorry, I did not get that.')
 
+# 循环之间一定要对齐，不然会被认为是上面的循环！
+
+
 # While loops
+
 def GCD(m, n):
     '''
     return: the greatest common divisor of integer m and n.
@@ -129,7 +134,7 @@ def GCD(m, n):
     d = min(m, n)
     while m % d != 0 or n % d != 0:
         d = d - 1
-    return d   # 循环之间一定要对齐，不然会被认为是上面的循环！
+    return d    
 # print(GCD(40, 40))
 
 
@@ -165,4 +170,3 @@ while True:   # keep walking
 
 
 
-# the bin packing problem
