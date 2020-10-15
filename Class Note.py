@@ -1,5 +1,5 @@
 ######## Python Learning #######
-
+'''
 ## ________________________________ Week 1 ________________________________  ##
 print('WEEK ONE')
 
@@ -25,7 +25,9 @@ c = 3 > 5  # 注意 ==, !=
 print(c)
 print(type(c))
 
+'''
 
+'''
 ## ________________________________  Week 2 ________________________________  ##
 print('WEEK TWO')
 
@@ -93,3 +95,74 @@ def f(x):
     y = (3*x-2)/math.sqrt(2*x+1)
     return y
 
+'''
+
+## ________________________________ Week 3 ________________________________  ##
+print('WEEK THREE')
+
+## Coonditional statements
+
+# If loops
+age = int(input('How old are you ?'))  # input function. int转换格式
+my_license = input('Do you have a license? Y/N?')
+# age = 14
+# my_license = 'N'
+
+#if my_license == 'Y' or my_license == 'Yes' or my_license == 'y':  #注意是==，不是=
+if my_license in ["Y", "YES", "Yes", "y"]:
+    if age >= 17:
+        print('You can drive in the UK.')
+    elif age >=15:
+        print('You can drive with your parents.')
+    else:
+        print('You are too young to drive.')
+elif my_license in ['N', 'NO', 'No', 'n']:
+    print('You cannot drive. ')
+else:
+    print('Sorry, I did not get that.')
+
+# While loops
+def GCD(m, n):
+    '''
+    return: the greatest common divisor of integer m and n.
+    '''
+    d = min(m, n)
+    while m % d != 0 or n % d != 0:
+        d = d - 1
+    return d   # 循环之间一定要对齐，不然会被认为是上面的循环！
+# print(GCD(40, 40))
+
+
+# break: 达到条件即停止
+# random walk
+
+import time
+import numpy as np
+
+road_size = 2
+max_step = 6
+
+rng = np.random.default_rng()   # random number generator
+pos = 0   # start from the middle of the road
+steps = 0
+
+while True:   # keep walking
+    n = rng.choice([-1, 1])    # random choice: left(-1) or right (+1)
+    pos += n                  # update position
+    steps += 1                 # update number of steps
+
+    if abs(pos) > road_size:   # if we went off the road, stop the loop early, display a message
+        print('Went into the ditch! :(')
+        break
+
+    # show the step
+    print('|' + ' '*(road_size + pos) + 'o' + ' '*(road_size - pos) + '|')
+    time.sleep(.5)
+
+    if steps >= max_step:
+        print('Success! :)')
+        break
+
+
+
+# the bin packing problem
