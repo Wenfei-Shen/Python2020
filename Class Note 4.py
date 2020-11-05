@@ -57,6 +57,6 @@ plt.plot(x_2, y_2)
 
 plt.legend(['y = 0.5x+0.5 ', 'y=-x+2'])
 plt.grid()
-# plt.show()
+plt.show()
 
 
