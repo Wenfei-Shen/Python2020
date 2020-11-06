@@ -1,20 +1,13 @@
-# 3
+# 4
 
-import numpy as np
-
-def matrix_op(X, n, m):
-    A = np.zeros((n,n))
-    B = np.zeros((n,n))
-    for i in range(0, n):
-        for j in range(0, n):
-            A[i][j] = 2 * (i+X) + 3 * (j-X)
-            B[i][j] = i - np.sqrt(j+X)
-    C = np.linalg.matrix_power(B, m)
-    D = np.dot(C, A)
-    E = np.round(D, decimals=2)
-
-    return E
+def dict_build(keys, values):
+    len1 = len(keys)
+    len2 = len(values)
+    if len1 != len2:
+        return None
+    else:
+        res_dic = { keys[i] : values[i] for i in range(0, len1)}
+        return res_dic
 
 
-print(matrix_op(6,2,3))
-print(matrix_op(2,3,2))
+print(dict_build(['a','c'],[1,2,3])== None)
