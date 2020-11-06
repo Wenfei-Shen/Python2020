@@ -1,21 +1,20 @@
-# 2
-def float_swap(x):
-    x = float(x)
-    y = str(x)
-    l = len(y)
+# 3
 
-    for i in range(0, l):
-        if y[i] == '.':
-            d = i
-            break
-    a = y[0:d]
-    b = y[(d+1):l]
-    z = [b, '.', a]
-    result = ''.join(z)
-    return result
+import numpy as np
+
+def matrix_op(X, n, m):
+    A = np.zeros((n,n))
+    B = np.zeros((n,n))
+    for i in range(0, n):
+        for j in range(0, n):
+            A[i][j] = 2 * (i+X) + 3 * (j-X)
+            B[i][j] = i - np.sqrt(j+X)
+    C = np.linalg.matrix_power(B, m)
+    D = np.dot(C, A)
+    E = np.round(D, decimals=2)
+
+    return E
 
 
-print(float_swap(45.1234))
-print(float_swap(0.1))
-print(float_swap(37))
-print(float_swap(1))
+print(matrix_op(6,2,3))
+print(matrix_op(2,3,2))
