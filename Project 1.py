@@ -51,21 +51,24 @@ def generate_stock_price(days, initial_price, volatility):
         # Add stock_prices[day-1] to inc to get NewPriceToday
         NewPriceToday = stock_prices[day-1] + inc
         # Get the drift from the news
-        d = news(0.01, volatility)
+        d = news(0.5, volatility)
         # Get the duration
         duration = len(d)
-        # Add the drift to the next days
-        totalDrift[day:day+duration] += d
+        # Decide whether the duration is longer then the left time
+        if duration <= (days-day):
+            totalDrift[day:day+duration] += d
+        else:
+            totalDrift[day:days] += d[0:(days-day)]
         # Add today's drift to today's price
         NewPriceToday += totalDrift[day]
         # Set stock_prices[day] to NewPriceToday or to NaN if it's negative
-        if NewPriceToday <=0:
+        if NewPriceToday <= 0:
             stock_prices[day] = np.nan
         else:
             stock_prices[day] = NewPriceToday
+
     return stock_prices
 
 
-print(generate_stock_price(2, 1, 1))
+print(generate_stock_price(6, 1, 1))
 
-print(generate_stock_price(2, 1, 1))
