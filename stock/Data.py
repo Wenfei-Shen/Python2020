@@ -51,7 +51,7 @@ def generate_stock_price(days, initial_price, volatility):
         # Add stock_prices[day-1] to inc to get NewPriceToday
         NewPriceToday = stock_prices[day-1] + inc
         # Get the drift from the news
-        d = news(0.5, volatility)
+        d = news(0.01, volatility)
         # Get the duration
         duration = len(d)
         # Decide whether the duration is longer then the left time
