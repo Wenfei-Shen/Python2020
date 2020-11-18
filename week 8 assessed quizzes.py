@@ -89,31 +89,36 @@ def Road_AfterTstep(R_old, T):
     Road_len = len(R_old)
     R_new = np.zeros(Road_len)
     for time in range(0, T):
+        # print('Time:', time)
+        # print('old:', R_old)
         # The first to the second last
         for i in range(0, Road_len-1):
             # There is a car
+            # print(R_old)
             if R_old[i] == 1:
-                print('Yes', i)
+                # print(R_old[i])
+                # print('Yes', i)
                 # Cannot move
                 if R_old[i+1] == 1:
-                    print('car', i+1)
+                    # print('car', i+1)
                     R_new[i] = 1
                     # print(R_new)
                 # Can move
                 elif R_old[i+1] == 0:
-                    print('empty', i+1)
+                    # print('empty', i+1)
                     R_new[i] = 0
                     R_new[i+1] = 1
                     # print(R_new)
             # There is not a car
             elif R_old[i] == 0:
-                print('NO', i)
-                R_new[i] = 0
+                # print('NO', i)
+                R_new[i] = R_new[i]
                 # print(R_new)
-            print(R_new)
+            # print(R_new)
+
         # The last cell has a car
         if R_old[-1] == 1:
-            print('last yes')
+            # print('last yes')
             # Can move
             if R_old[0] == 0:
                 R_new[-1] = 0
@@ -123,8 +128,20 @@ def Road_AfterTstep(R_old, T):
                 R_new[-1] = 1
         # No car in the last cell
         elif R_old[-1] == 0:
-            print('last no')
-            R_new[-1] = 0
-    return R_new
+            # print('last no')
+            R_new[-1] = R_new[-1]
+        # print('new:', R_new)
 
-print(Road_AfterTstep([1, 0, 0, 1, 1, 0],1))
+        R_old = R_new
+        R_res = R_new
+        R_new = [0]*Road_len
+    fin = []
+    for n in range(0, Road_len):
+        fin += str(R_res[n])
+    result = ' '.join(fin)
+    fin_result = '[' + result + ']'
+
+    return fin_result
+
+print(Road_AfterTstep([1, 0, 0, 1, 1, 1, 0, 0, 1],3))
+print(Road_AfterTstep([1, 0, 0, 1, 1, 1],10))
